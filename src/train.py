@@ -56,8 +56,8 @@ class LRDataset(Dataset):
         return len(self.label)
 
     def __getitem__(self, index) -> T_co:
-        feature = torch.from_numpy(np.array([[self.word2vec.wv[i] for i in self.sentences[index]]]))
-        type_ids = torch.from_numpy(np.array([self.type_ids[index]]))
+        feature = torch.from_numpy(np.array([self.word2vec.wv[i] for i in self.sentences[index]]))
+        type_ids = torch.from_numpy(np.array(self.type_ids[index]))
         label = torch.from_numpy(np.array(self.label[index][:1]))
         return {
             "feature": feature,
@@ -69,9 +69,9 @@ class LRDataset(Dataset):
 def collate_func(batch):
     # torch.nn.functional.pad(batch[0]["feature"], (0,0,0,20,0,0))
 
-    feature = [F.pad(i["feature"], (0, 0, 0, MAX_LENGTH-i["feature"].shape[-2], 0, 0)) for i in batch]
-    type_ids = [F.pad(i["type_ids"], (0, 0, 0, MAX_LENGTH-i["type_ids"].shape[-2], 0, 0), 3) for i in batch]
-    label = batch["labels"]
+    feature = torch.cat([F.pad(i["feature"].unsqueeze(0), (0, 0, 0, MAX_LENGTH-i["feature"].shape[-2])) for i in batch], dim=0)
+    type_ids = torch.cat([F.pad(i["type_ids"], (0, MAX_LENGTH-i["type_ids"].shape[-1]), value=3).unsqueeze(0) for i in batch], dim=0)
+    label = torch.cat([i["labels"] for i in batch], dim=0)
     return {
         "feature": feature,
         "type_ids": type_ids,
