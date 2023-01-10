@@ -132,3 +132,6 @@ dmypy.json
 **/*.parquet
 **/*.csv
 **/*.pkl
+notebook/*.txt
+notebook/*.ofe
+notebook/*.feather
