@@ -46,5 +46,5 @@ Public Recall
 * 滑窗特征
 * 滑窗融合
 * 训练集随机增加type为3的负样本
-* 0.8 week + 0.2 week to split train&gt data
+* 0.8 week + 0.2 week to split train&gt data (正样本过少，有人获得不错的效果，暂时不再尝试)
 * Min-Max、Z-score、Log-based、L2-normalize、Gauss-Rank特征缩放
