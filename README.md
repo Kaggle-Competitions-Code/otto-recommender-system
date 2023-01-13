@@ -16,31 +16,35 @@
 * 商品被clicks的数量
 * 商品被orders的数量
 * 商品被carts的数量
-* 浏览商品中被carts的比例
-* carts商品中被购买的比例
+* 用户浏览商品中被carts的比例
+* 用户carts商品中被购买的比例
+* 滑窗行为分数
 
 ## experiment
 
 Public Recall
-* clicks recall = 0.5255597442145808
+<!-- * clicks recall = 0.5255597442145808
 * carts recall = 0.4093328152483512
-* orders recall = 0.6487936598117477
+* orders recall = 0.6487936598117477 -->
 
 * clicks recall = 0.5912166896226447
 * carts recall = 0.4983971745865439
 * orders recall = 0.6989974561367112
 
 
-
 ### carts
-| 方法 | Summary | R@5E4 | R@5E5 | R@5E6 |
-| ---  |  ---   |  ---  |  ---  |  ---  |
+| 方法 | Summary | R@5E4 | R@5E5 | R@5E6 | LB |
+| ---  |  ---   |  ---  |  ---  |  ---  | --- |
 | XGBRanker+OpenFE | AutoFE生成44特征 + 11手工特征| | 0.1613 | |
-| XGBRanker+FE | 11手工特征 | | 0.36 | 0.42 |
+| XGBRanker+FE | 11手工特征 | | 0.32 | 0.42 |
 | XGBRanker+FE+Noisy| 11手工特征 | | 0.264 | |
+| XGBRanker+FE+Noisy+BUG| 17特征 | | 0.509 | | 0.572 |
 
 
 ----
 ## TODO:
 * 滑窗特征
+* 滑窗融合
+* 训练集随机增加type为3的负样本
+* 0.8 week + 0.2 week to split train&gt data
 * Min-Max、Z-score、Log-based、L2-normalize、Gauss-Rank特征缩放
