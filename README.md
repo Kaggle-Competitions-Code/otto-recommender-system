@@ -54,3 +54,12 @@ Public Recall
 * 0.8 week + 0.2 week to split train&gt data (正样本过少，有人获得不错的效果，暂时不再尝试)
 * Min-Max、Z-score、Log-based、L2-normalize、Gauss-Rank特征缩放
 * downsample (-)
+
+----
+# Log
+## 2023.1.18
+更换训练集、验证集、测试集及特征的生成方案，参考[Kaggle Link](https://www.kaggle.com/competitions/otto-recommender-system/discussion/370210)
+
+
+## 2023.1.19
+重新生成 Valid-A candidates, 原candidates postive:negative = 1:354
