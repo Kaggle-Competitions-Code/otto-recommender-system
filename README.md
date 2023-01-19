@@ -11,13 +11,16 @@
 * `feature/session_clicks_count.pkl` user feature, 每个session的clicks次数
 * `feature/session_orders_count.pkl` user feature, 每个session的orders次数
 
-## feature engineering
+## feature engineering 
+**+ 表示有提高，- 表示下降**
 
+* 时间相对天数
+* 时间相对天数余数
 * 商品被clicks的数量
 * 商品被orders的数量
 * 商品被carts的数量
-* 用户浏览商品中被carts的比例
-* 用户carts商品中被购买的比例
+* 用户浏览商品中被carts的比例（-）
+* 用户carts商品中被购买的比例（-）
 * 滑窗行为分数
 
 ## experiment
@@ -31,14 +34,16 @@ Public Recall
 * carts recall = 0.4983971745865439
 * orders recall = 0.6989974561367112
 
+### orders
+| 方法 | Summary | R@5E4 | R@5E5 | R@5E6 | LB |
+| ---  |  ---   |  ---  |  ---  |  ---  | --- |
+| XGBRanker+FE+Noisy| 5手工特征 | | 0.6665 |  |
+
 
 ### carts
 | 方法 | Summary | R@5E4 | R@5E5 | R@5E6 | LB |
 | ---  |  ---   |  ---  |  ---  |  ---  | --- |
-| XGBRanker+OpenFE | AutoFE生成44特征 + 11手工特征| | 0.1613 | |
-| XGBRanker+FE | 11手工特征 | | 0.32 | 0.42 |
-| XGBRanker+FE+Noisy| 11手工特征 | | 0.264 | |
-| XGBRanker+FE+Noisy+BUG| 17特征 | | 0.509 | | 0.572 |
+| XGBRanker+FE+Noisy| 5手工特征 | | 0.48 | | 0.57|
 
 
 ----
@@ -48,3 +53,4 @@ Public Recall
 * 训练集随机增加type为3的负样本
 * 0.8 week + 0.2 week to split train&gt data (正样本过少，有人获得不错的效果，暂时不再尝试)
 * Min-Max、Z-score、Log-based、L2-normalize、Gauss-Rank特征缩放
+* downsample (-)
