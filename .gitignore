@@ -136,3 +136,4 @@ notebook/*.txt
 notebook/*.ofe
 notebook/*.feather
 data/
+notebook/trash/

@@ -63,3 +63,9 @@ Public Recall
 
 ## 2023.1.19
 重新生成 Valid-A candidates, 原candidates postive:negative = 1:354
+
+## 2023.1.25
+不加入valid A数据集没有，但valid B中存在的正样本，LB 0.565->0.572
+
+## 2023.1.28
+生成top100 candidates，时序权重behavior score，是否会复购，点击后是否会购买，点击后是否会carts，carts后是否会购买
