@@ -1,5 +1,7 @@
 # otto-recommender-system
 
+[OTTO – Multi-Objective Recommender System](https://www.kaggle.com/competitions/otto-recommender-system)
+
 方案一（耗时过久，废弃）：
 ----
 ## data
