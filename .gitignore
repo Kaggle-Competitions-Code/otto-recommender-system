@@ -137,3 +137,4 @@ notebook/*.ofe
 notebook/*.feather
 data/
 notebook/trash/
+**/*.pqt
